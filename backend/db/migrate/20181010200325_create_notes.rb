@@ -3,6 +3,7 @@ class CreateNotes < ActiveRecord::Migration[5.2]
     create_table :notes do |t|
       t.string :title
       t.string :body
+      t.belongs_to :user
 
       t.timestamps
     end

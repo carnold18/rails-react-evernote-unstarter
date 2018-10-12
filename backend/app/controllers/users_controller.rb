@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
 
   def profile
-    render json: { user: User.new(current_user) }, status: :accepted
+    render json: current_user, status: :accepted
   end
   
   def index
@@ -21,16 +21,23 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    
-    if user.save
-      token = encode_token(user_id: user.id)
-      render json: { jwt: token }, status: :created
-      /can't get render to show user/ 
-    else
-      render json: { error: 'failed to create user' }, status: :not_acceptable
-    end
+    user = User.create(user_params)
+    render json: {
+      user: user,
+      token: encode_token({ user_id: user.id })
+    }
   end
+
+  # def create
+  #   user = User.new(user_params)
+    
+  #   if user.save
+  #     token = encode_token(user_id: user.id)
+  #     render json: { user: user, jwt: token }, status: :created
+  #   else
+  #     render json: { error: 'failed to create user' }, status: :not_acceptable
+  #   end
+  # end
 
   def edit
     user = User.find(params[:id])

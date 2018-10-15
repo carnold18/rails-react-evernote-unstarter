@@ -30,3 +30,20 @@
     transform: rotate(360deg);
   }
 }
+
+.header {
+  background-color: MediumSeaGreen;
+  text-align: center;
+  padding: 20 px;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  background-color: LightGray;
+}
+
+.main {
+  float: right;
+  width: 66.66%
+}

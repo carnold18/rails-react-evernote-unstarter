@@ -12,7 +12,7 @@ class RouteCard extends Component {
   componentDidMount() {
     fetch('http://localhost:3001/routes')
     .then(console.log)
-    // .then(repsonse => repsonse.json())
+    // .then(response => response.json())
     // .then(routes => this.setState({routes: routes}))
   }
 

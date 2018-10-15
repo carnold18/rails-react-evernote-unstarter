@@ -79,33 +79,41 @@ class App extends Component {
     console.log(this.state.currentUser);
     return (
       <div className="App">
-        <form onSubmit={this.logIn}>
-          <input
-            type="text"
-            onChange={this.handleChange}
-            placeholder="username"
-            name="username"
-          />
-          <input
-            type="password"
-            onChange={this.handleChange}
-            placeholder="password"
-            name="password"
-          />
-          <input type="submit" />
-        </form>
-        <button onClick={this.logOut}>Log Out</button>
-        <header className="App-header">
+        <div className="header">
+          <h1>Vietnam Travel Cloud</h1>
+          <div className="login">
+          <form onSubmit={this.logIn}>
+            <input
+              type="text"
+              onChange={this.handleChange}
+              placeholder="username"
+              name="username"
+            />
+            <input
+              type="password"
+              onChange={this.handleChange}
+              placeholder="password"
+              name="password"
+            />
+            <input type="submit" />
+          </form>
+          {this.state.currentUser.id ? (<button onClick={this.logOut}>Log Out</button>) : null}
           {this.state.currentUser.id ? (
             <h1>Hello {this.state.currentUser.username}</h1>
           ) : null}
+          </div>
+          <div className="column">
+            <RouteCard />
+          </div>
+          <div className="main">
+            <h1>Main Content</h1>
+          </div>
+        </div>
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <RouteCard />
+        </header> */}
+        
       </div>
     );
   }

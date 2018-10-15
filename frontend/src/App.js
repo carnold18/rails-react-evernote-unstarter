@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import RouteCard from './RouteCard';
+import RouteDetails from './RouteDetails';
 import daLatVietnam from './daLatVietnam.JPG';
 
 class App extends Component {
@@ -9,14 +10,13 @@ class App extends Component {
     username: "",
     password: "",
     currentUser: {}
-  };
+  }
 
   componentDidMount() {
-    const token = localStorage.token;
     fetch("http://localhost:3000/profile", {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${localStorage.token}`
       }
     })
       .then(resp => resp.json())
@@ -27,16 +27,17 @@ class App extends Component {
           });
         }
       });
+      console.log(localStorage.token)
   }
 
-  handleChange = e => {
+  handleChange = event => {
     this.setState({
-      [e.target.name]: e.target.value
+      [event.target.name]: event.target.value
     });
   };
 
-  logIn = e => {
-    e.preventDefault();
+  logIn = event => {
+    event.preventDefault();
 
     fetch("http://localhost:3000/login", {
       method: "POST",
@@ -100,48 +101,20 @@ class App extends Component {
             </form>
             {this.state.currentUser.id ? (<button onClick={this.logOut}>Log Out</button>) : null}
             {this.state.currentUser.id ? (
-              <h1>Hello {this.state.currentUser.username}</h1>
+              <h1>Welcome, {this.state.currentUser.username}!</h1>
             ) : null}
           </div>
           <div className="column">
-            <RouteCard />
+            <RouteCard currentUser={this.state.currentUser}/>
           </div>
           <div className="main">
-            <h1>Route Details</h1>
+          {/* Implement conditional rendering here to show the details for each selected route. */}
+            <RouteDetails />
           </div>
         </div>
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header> */}
-        
       </div>
     );
   }
-
-  // render() {
-
-  //   return (
-  //     <div className="App">
-  //       <header className="App-header">
-  //         <img src={logo} className="App-logo" alt="logo" />
-  //         <p>
-
-  //           Edit <code>src/App.js</code> and save to reload.
-  //         </p>
-  //         <a
-  //           className="App-link"
-  //           href="https://reactjs.org"
-  //           target="_blank"
-  //           rel="noopener noreferrer"
-  //         >
-  //           Learn React
-  //         </a>
-  //       </header>
-  //     </div>
-  //   );
-  // }
-
 }
 
 export default App;

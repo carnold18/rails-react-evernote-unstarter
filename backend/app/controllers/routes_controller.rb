@@ -1,63 +1,49 @@
 class RoutesController < ApplicationController
-    skip_before_action :authorized, only: [:create]
-  
-    def profile
-      render json: current_user, status: :accepted
-    end
+    skip_before_action :authorized
     
     def index
-      users = User.all
-      render json: users
+      routes = Route.all
+      render json: routes
     end
   
     def show
-      user = User.find(params[:id])
-      render json: user
+      route = Route.find(params[:id])
+      render json: route
     end
   
     def new
-      user = User.new(user_params)
-      render json: user
+      route = Route.new(route_params)
+      render json: route
     end
   
     def create
-      user = User.create(user_params)
+      route = Route.new(route_params)
+      route.user = current_user
+      route.save
       render json: {
-        user: user,
-        token: encode_token({ user_id: user.id })
+        route: route
       }
     end
   
-    # def create
-    #   user = User.new(user_params)
-      
-    #   if user.save
-    #     token = encode_token(user_id: user.id)
-    #     render json: { user: user, jwt: token }, status: :created
-    #   else
-    #     render json: { error: 'failed to create user' }, status: :not_acceptable
-    #   end
-    # end
-  
     def edit
-      user = User.find(params[:id])
-      render json: user
+      route = Route.find(params[:id])
+      render json: route
     end
   
     def update
-      if user.update(user_params)
-        render json: user
+      if route.update(route_params)
+        render json: route
       else
-        render json: user.errors
+        render json: route.errors
       end
     end
   
     def destroy
-      user.destroy
+      route.destroy
     end
   
     private
-      def user_params
-        params.require(:user).permit(:username, :email, :password)
+      def route_params
+        params.require(:route).permit(:transportation, :distance, :name, :user_id)
       end
   end

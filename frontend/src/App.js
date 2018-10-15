@@ -72,7 +72,7 @@ class App extends Component {
       currentUser: {}
     })
 
-    this.localStorage.token = ""
+    localStorage.token = "";
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import RouteCard from './RouteCard';
+import daLatVietnam from './daLatVietnam.JPG';
 
 class App extends Component {
 
@@ -81,32 +81,33 @@ class App extends Component {
       <div className="App">
         <div className="header">
           <h1>Vietnam Travel Cloud</h1>
+          <img src={daLatVietnam} alt="logo" />
           <div className="login">
-          <form onSubmit={this.logIn}>
-            <input
-              type="text"
-              onChange={this.handleChange}
-              placeholder="username"
-              name="username"
-            />
-            <input
-              type="password"
-              onChange={this.handleChange}
-              placeholder="password"
-              name="password"
-            />
-            <input type="submit" />
-          </form>
-          {this.state.currentUser.id ? (<button onClick={this.logOut}>Log Out</button>) : null}
-          {this.state.currentUser.id ? (
-            <h1>Hello {this.state.currentUser.username}</h1>
-          ) : null}
+            <form onSubmit={this.logIn}>
+              <input
+                type="text"
+                onChange={this.handleChange}
+                placeholder="username"
+                name="username"
+              />
+              <input
+                type="password"
+                onChange={this.handleChange}
+                placeholder="password"
+                name="password"
+              />
+              <input type="submit" />
+            </form>
+            {this.state.currentUser.id ? (<button onClick={this.logOut}>Log Out</button>) : null}
+            {this.state.currentUser.id ? (
+              <h1>Hello {this.state.currentUser.username}</h1>
+            ) : null}
           </div>
           <div className="column">
             <RouteCard />
           </div>
           <div className="main">
-            <h1>Main Content</h1>
+            <h1>Route Details</h1>
           </div>
         </div>
         {/* <header className="App-header">

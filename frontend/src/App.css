@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -32,6 +33,7 @@
 }
 
 .header {
+  background-image: "daLatVietnam.JPG";
   background-color: MediumSeaGreen;
   text-align: center;
   padding: 20 px;
@@ -46,4 +48,8 @@
 .main {
   float: right;
   width: 66.66%
+}
+
+.login {
+  margin: 20 px;
 }

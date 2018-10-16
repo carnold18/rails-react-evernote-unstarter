@@ -4,23 +4,21 @@ class RouteDetails extends Component {
 
     editRoute = (event) => {
         event.preventDefault();
-        console.log(event.target[0].value)
-        console.log(event.target[1].value)
+        // console.log(event.target[0].value)
+        // console.log(event.target[1].value)
         const url = 'http://localhost:3000/routes/'+this.props.selectedRoute.id
+        console.log(url)
         fetch(url, {
             method: "PATCH",
             body: JSON.stringify({
-                // "value": {
                 name: event.target[0].value,
                 transportation: event.target[1].value,
-                distance: event.target[2].value
-            //   }
+                distance: parseInt(event.target[2].value)
             }),
               headers: {
                 "Content-Type": "application/json"
               }
         })
-        .then(response => response.json())
         .then(console.log)
     }
     

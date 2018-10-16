@@ -25,13 +25,15 @@ class RoutesController < ApplicationController
       }
     end
   
-    def edit
-      route = Route.find(params[:id])
-      render json: route
-    end
+    # def edit
+      
+    #   render json: route
+    # end
   
     def update
-      if route.update(route_params)
+      route = Route.find(params[:id])
+      route.update(route_params)
+      if route.save
         render json: route
       else
         render json: route.errors
@@ -44,6 +46,6 @@ class RoutesController < ApplicationController
   
     private
       def route_params
-        params.require(:route).permit(:name, :transportation, :distance, :user_id)
+        params.permit(:name, :transportation, :distance, :user_id)
       end
   end

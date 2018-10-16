@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 
 class RouteDetails extends Component {
-
+    
     render() {
-        return(
+        return (
+            this.props.selectedRoute ? 
             <div>
-                <h1>Route Details</h1>
-                <p>Transportation Type</p>
-                <p>Distance</p>
-            </div>
+                <h1>{this.props.selectedRoute.name}</h1>
+                <p>{this.props.selectedRoute.transportation}</p>
+                <p>{this.props.selectedRoute.distance}</p>
+            </div> : null
         )
     }
 }

@@ -9,7 +9,9 @@ class App extends Component {
   state = {
     username: "",
     password: "",
-    currentUser: {}
+    currentUser: {},
+    routes: [],
+    selectedRoute: {}
   }
 
   componentDidMount() {
@@ -27,7 +29,12 @@ class App extends Component {
           });
         }
       });
-      console.log(localStorage.token)
+      // console.log(localStorage.token)
+    const url = 'http://localhost:3000/routes'
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {console.log(data); return data})
+      .then(data => this.setState({routes: data}))
   }
 
   handleChange = event => {
@@ -76,8 +83,13 @@ class App extends Component {
     localStorage.token = "";
   }
 
+  displayRoute = (event) => {
+    event.preventDefault();
+    // return this.setState({selectedRoute: route})
+  }
+
   render() {
-    console.log(this.state.currentUser);
+    // console.log(this.state.currentUser);
     return (
       <div className="App">
         <div className="header">
@@ -105,11 +117,11 @@ class App extends Component {
             ) : null}
           </div>
           <div className="column">
-            <RouteCard currentUser={this.state.currentUser}/>
+            <RouteCard currentUser={this.state.currentUser} routes={this.state.routes}/>
           </div>
           <div className="main">
           {/* Implement conditional rendering here to show the details for each selected route. */}
-            <RouteDetails />
+            <RouteDetails route={this.state.selectedRoute} displayRoute={this.displayRoute}/>
           </div>
         </div>
       </div>

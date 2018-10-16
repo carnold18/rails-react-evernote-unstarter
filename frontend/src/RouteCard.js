@@ -12,7 +12,7 @@ class RouteCard extends Component {
     return (
       this.props.currentUser ?
       <div>{this.personalizeRoutes().map(route => {
-        return <button key={route.id}><p onClick={event => this.props.displayRoute(event.target)}>{route.name}</p></button>
+        return <button key={route.id}><p onClick={event => this.props.displayRoute(route)}>{route.name}</p></button>
       })}</div> : null
     )}
 }

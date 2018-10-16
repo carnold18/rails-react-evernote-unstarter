@@ -83,9 +83,9 @@ class App extends Component {
     localStorage.token = "";
   }
 
-  displayRoute = (event) => {
-    event.preventDefault();
-    // return this.setState({selectedRoute: route})
+  displayRoute = (route) => {
+    // console.log(route)
+    return this.setState({selectedRoute: route})
   }
 
   render() {
@@ -117,11 +117,10 @@ class App extends Component {
             ) : null}
           </div>
           <div className="column">
-            <RouteCard currentUser={this.state.currentUser} routes={this.state.routes}/>
+            <RouteCard currentUser={this.state.currentUser} routes={this.state.routes} displayRoute={this.displayRoute} />
           </div>
           <div className="main">
-          {/* Implement conditional rendering here to show the details for each selected route. */}
-            <RouteDetails route={this.state.selectedRoute} displayRoute={this.displayRoute}/>
+            <RouteDetails selectedRoute={this.state.selectedRoute} />
           </div>
         </div>
       </div>

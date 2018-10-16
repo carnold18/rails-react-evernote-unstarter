@@ -32,7 +32,12 @@ class App extends Component {
       });
       // console.log(localStorage.token)
     const url = 'http://localhost:3000/routes'
-    fetch(url)
+    fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
       .then(response => response.json())
       // .then(data => {console.log(data); return data})
       .then(data => this.setState({routes: data}))

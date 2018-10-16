@@ -24,7 +24,7 @@ class RouteCard extends Component {
       <div>
         {this.personalizeRoutes().map(route => {
           return <button key={route.id}><p onClick={event => this.props.displayRoute(route)}>{route.name}</p></button>})}
-          <button onClick={this.addRoute}>Add Your Route!</button>
+          <button onClick={this.addRoute}>Add or Edit Your Routes!</button>
       </div> : null
     )}
 }

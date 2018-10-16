@@ -44,6 +44,6 @@ class RoutesController < ApplicationController
   
     private
       def route_params
-        params.require(:route).permit(:transportation, :distance, :name, :user_id)
+        params.require(:route).permit(:name, :transportation, :distance, :user_id)
       end
   end

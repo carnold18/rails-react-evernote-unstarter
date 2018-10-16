@@ -11,7 +11,8 @@ class App extends Component {
     password: "",
     currentUser: {},
     routes: [],
-    selectedRoute: {}
+    selectedRoute: {},
+    isMember: false
   }
 
   componentDidMount() {
@@ -91,11 +92,17 @@ class App extends Component {
     return this.setState({selectedRoute: route})
   }
 
+  handleMemberChange = (event) => {
+    this.setState({
+      isMember: !this.state.isMember
+    })
+  }
+
   render() {
     // console.log(this.state.currentUser);
     return (
       <div className="App">
-          <Header logIn={this.logIn} logOut={this.logOut} handleChange={this.handleChange} currentUser={this.state.currentUser} />
+          <Header logIn={this.logIn} logOut={this.logOut} handleChange={this.handleChange} currentUser={this.state.currentUser} isMember={this.state.isMember} handleMemberChange={this.handleMemberChange}/>
           <div className="column">
             <RouteCard currentUser={this.state.currentUser} routes={this.state.routes} displayRoute={this.displayRoute} />
           </div>

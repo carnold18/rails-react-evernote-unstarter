@@ -5,6 +5,7 @@ class Login extends Component {
     render() {
         return (
             <div className="header">
+                Already a Member?
                 <div className="login">
                     <form onSubmit={this.props.logIn}>
                         <input

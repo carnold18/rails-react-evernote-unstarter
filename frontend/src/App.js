@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import RouteCard from './RouteCard';
 import RouteDetails from './RouteDetails';
-import daLatVietnam from './daLatVietnam.JPG';
+import Header from './Header';
 
 class App extends Component {
 
@@ -71,16 +71,19 @@ class App extends Component {
       });
   };
 
-  logOut = e => {
-    e.preventDefault();
+  logOut = () => {
+    // event.preventDefault();
     // debugger
     this.setState({
       username: "",
       password: "",
-      currentUser: {}
+      currentUser: {},
+      routes: [],
+      selectedRoute: {}
     })
 
     localStorage.token = "";
+
   }
 
   displayRoute = (route) => {
@@ -92,40 +95,24 @@ class App extends Component {
     // console.log(this.state.currentUser);
     return (
       <div className="App">
-        <div className="header">
-          <h1>Vietnam Travel Cloud</h1>
-          <img src={daLatVietnam} alt="logo" />
-          <div className="login">
-            <form onSubmit={this.logIn}>
-              <input
-                type="text"
-                onChange={this.handleChange}
-                placeholder="username"
-                name="username"
-              />
-              <input
-                type="password"
-                onChange={this.handleChange}
-                placeholder="password"
-                name="password"
-              />
-              <input type="submit" />
-            </form>
-            {this.state.currentUser.id ? (<button onClick={this.logOut}>Log Out</button>) : null}
-            {this.state.currentUser.id ? (
-              <h1>Welcome, {this.state.currentUser.username}!</h1>
-            ) : null}
-          </div>
+          <Header logIn={this.logIn} logOut={this.logOut} handleChange={this.handleChange} currentUser={this.state.currentUser} />
           <div className="column">
             <RouteCard currentUser={this.state.currentUser} routes={this.state.routes} displayRoute={this.displayRoute} />
           </div>
           <div className="main">
             <RouteDetails selectedRoute={this.state.selectedRoute} />
           </div>
-        </div>
       </div>
     );
   }
 }
 
 export default App;
+
+// Goals for Tuesday, October 16
+
+// Add search feature to route names - needs to be on RouteCard componenent. 
+// Figure out Templated.
+// Add create user on the main page - needs to be on App component.
+// Be able to edit / update route details.
+// Finalize auth work-arounds.

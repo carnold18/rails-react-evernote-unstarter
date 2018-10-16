@@ -33,7 +33,7 @@ class App extends Component {
     const url = 'http://localhost:3000/routes'
     fetch(url)
       .then(response => response.json())
-      .then(data => {console.log(data); return data})
+      // .then(data => {console.log(data); return data})
       .then(data => this.setState({routes: data}))
   }
 

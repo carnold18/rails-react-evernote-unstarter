@@ -1,5 +1,5 @@
 class RoutesController < ApplicationController
-    skip_before_action :authorized
+    skip_before_action :authorized, only: [:index, :show]
     
     def index
       routes = Route.all
@@ -24,11 +24,6 @@ class RoutesController < ApplicationController
         route: route
       }
     end
-  
-    # def edit
-      
-    #   render json: route
-    # end
   
     def update
       route = Route.find(params[:id])

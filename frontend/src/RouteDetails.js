@@ -16,7 +16,8 @@ class RouteDetails extends Component {
                 distance: parseInt(event.target[2].value)
             }),
               headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.token}`
               }
         })
         .then(console.log)

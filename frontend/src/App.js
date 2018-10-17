@@ -12,7 +12,8 @@ class App extends Component {
     currentUser: {},
     routes: [],
     selectedRoute: {},
-    isMember: false
+    isMember: false,
+    isLoggedIn: false
   }
 
   componentDidMount() {
@@ -69,7 +70,8 @@ class App extends Component {
         if (!data.error) {
           localStorage.token = data.token;
           this.setState({
-            currentUser: data.user
+            currentUser: data.user,
+            isLoggedIn: true
           });
         } else {
           this.setState({
@@ -87,7 +89,9 @@ class App extends Component {
       password: "",
       currentUser: {},
       routes: [],
-      selectedRoute: {}
+      selectedRoute: {},
+      isMember: false,
+      isLoggedIn: false
     })
 
     localStorage.token = "";
@@ -109,7 +113,7 @@ class App extends Component {
     // console.log(this.state.currentUser);
     return (
       <div className="App">
-          <Header logIn={this.logIn} logOut={this.logOut} handleChange={this.handleChange} currentUser={this.state.currentUser} isMember={this.state.isMember} handleMemberChange={this.handleMemberChange}/>
+          <Header isLoggedIn={this.state.isLoggedIn} logIn={this.logIn} logOut={this.logOut} handleChange={this.handleChange} currentUser={this.state.currentUser} isMember={this.state.isMember} handleMemberChange={this.handleMemberChange}/>
           <div className="column">
             <RouteCard currentUser={this.state.currentUser} routes={this.state.routes} displayRoute={this.displayRoute} />
           </div>

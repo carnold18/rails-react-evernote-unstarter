@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 
 class RouteDetails extends Component {
 
@@ -27,30 +28,30 @@ class RouteDetails extends Component {
         return (
             this.props.selectedRoute ? 
             <div>
-                <h1>{this.props.selectedRoute.name}</h1>
+                <p>{this.props.selectedRoute.name}</p>
                 <p>{this.props.selectedRoute.transportation}</p>
                 <p>{this.props.selectedRoute.distance}</p>
                 { this.props.selectedRoute.name ? (
                 <form onSubmit={this.editRoute}>
-                <textarea
+                Route Name: <textarea
                     // type="text"
                     onChange={this.props.handleChange}
                     placeholder={this.props.selectedRoute.name}
                     name="route name"
                 />
-                <textarea
+                Transportation Type: <textarea
                     // type="text"
                     onChange={this.props.handleChange}
                     placeholder={this.props.selectedRoute.transportation}
                     name="transportation"
                 />
-                <textarea
+                Travel Distance: <textarea
                     // type="text"
                     onChange={this.props.handleChange}
                     placeholder={this.props.selectedRoute.distance}
                     name="distance"
                 />
-                <input type="submit" />
+                <input type="submit" class="button small alt"/>
             </form> ) : null }
             </div> : null
         )

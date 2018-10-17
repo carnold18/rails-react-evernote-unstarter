@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
+import './App.css';
 
 class IsMember extends Component {
     
     render() {
         return (
             <div>
-                <form>
                 Not a member, yet?
-                    <label>
-                        <input
-                            name="isMember"
-                            type="checkbox"
-                            onChange={this.props.handleMemberChange} />
-                    </label>
-                </form>
+                <br /><button class="button small alt" onClick={this.props.handleMemberChange}>Join Us!</button>
             </div>
         )
     }

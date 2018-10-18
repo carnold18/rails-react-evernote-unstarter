@@ -114,10 +114,10 @@ class App extends Component {
     return (
       <div className="App">
           <Header isLoggedIn={this.state.isLoggedIn} logIn={this.logIn} logOut={this.logOut} handleChange={this.handleChange} currentUser={this.state.currentUser} isMember={this.state.isMember} handleMemberChange={this.handleMemberChange}/>
-          <div className="column">
+          <div class="route-container-left">
             <RouteCard currentUser={this.state.currentUser} routes={this.state.routes} displayRoute={this.displayRoute} />
           </div>
-          <div className="main">
+          <div class="route-container-right">
             <RouteDetails selectedRoute={this.state.selectedRoute} />
           </div>
       </div>

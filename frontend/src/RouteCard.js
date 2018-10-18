@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 
 class RouteCard extends Component {
 
@@ -21,12 +22,18 @@ class RouteCard extends Component {
   render() {
     return (
       this.props.currentUser ?
-      <ol class="box">
-        Click on route to edit:
-        {this.personalizeRoutes().map(route => {
-          return <li key={route.id} onClick={event => this.props.displayRoute(route)} class="box">{route.name}</li>})}
-          <button class="button small alt hover" onClick={this.addRoute}>Add Route?</button>
-      </ol> : null
+      <div class="container">
+        <div class="row">
+          <div class="4u">
+            <section class="special box">
+              <h2>Click on route to edit:</h2>
+              {this.personalizeRoutes().map(route => {
+              return <p key={route.id} onClick={event => this.props.displayRoute(route)} class="box-a"><h3>{route.name}</h3></p>})}
+              <button class="button small alt" onClick={this.addRoute}>Add Route?</button>
+            </section>
+          </div>
+        </div>
+      </div> : null
     )}
 }
 

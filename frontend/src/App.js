@@ -14,7 +14,8 @@ class App extends Component {
     routes: [],
     selectedRoute: {},
     isMember: false,
-    isLoggedIn: false
+    isLoggedIn: false, 
+    input: ""
   }
 
   componentDidMount() {
@@ -110,14 +111,23 @@ class App extends Component {
     })
   }
 
+  searchRoutes = (input) => {
+    this.setState({input: input})
+    console.log(input)
+  }
+
+  searchedRouteList = () => {
+    return this.state.routes.filter(route => route.name.toLowerCase().includes(this.state.input.toLowerCase()))
+  }
+
   render() {
     // console.log(this.state.currentUser);
     return (
       <div className="App">
-          <Header isLoggedIn={this.state.isLoggedIn} logIn={this.logIn} logOut={this.logOut} handleChange={this.handleChange} currentUser={this.state.currentUser} isMember={this.state.isMember} handleMemberChange={this.handleMemberChange}/>
+          <Header isLoggedIn={this.state.isLoggedIn} logIn={this.logIn} logOut={this.logOut} handleChange={this.handleChange} currentUser={this.state.currentUser} isMember={this.state.isMember} handleMemberChange={this.handleMemberChange} />
           <br />
-          <Search />
-          <RouteViews selectedRoute={this.state.selectedRoute} currentUser={this.state.currentUser} routes={this.state.routes} displayRoute={this.displayRoute}/>
+          <Search searchRoutes={this.searchRoutes} />
+          <RouteViews selectedRoute={this.state.selectedRoute} currentUser={this.state.currentUser} routes={this.searchedRouteList()} displayRoute={this.displayRoute} />
           <Footer />
       </div>
     );
@@ -126,10 +136,3 @@ class App extends Component {
 
 export default App;
 
-// Goals for Tuesday, October 16
-
-// Add search feature to route names - needs to be on RouteCard componenent. 
-// Figure out Templated.
-// Add create user on the main page - needs to be on App component.
-// Be able to edit / update route details.
-// Finalize auth work-arounds.

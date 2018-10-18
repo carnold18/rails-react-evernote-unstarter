@@ -1124,6 +1124,10 @@ Added CSS
 
     .route-view {
       width: 70%;
-    }
+	}
+	
+	.logout {
+		margin-right: 800px
+	}
   
 

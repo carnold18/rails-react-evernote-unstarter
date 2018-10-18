@@ -22,7 +22,7 @@ class Header extends Component {
                 </div>
                 <br />
                 <div className="welcome-right">
-                    {this.props.currentUser.id ? (<button className="button small special align-center" onClick={this.props.logOut}>Log Out</button>) : null}
+                    {this.props.currentUser.id ? (<button className="logout button small special align-center" onClick={this.props.logOut}>Log Out</button>) : null}
                 </div>
                 <div>
                     { localStorage.token.length >= 5 !== true ?

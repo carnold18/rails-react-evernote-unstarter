@@ -24,13 +24,11 @@ class RouteCard extends Component {
       this.props.currentUser ?
       <div class="container">
         <div class="row">
-          <div class="4u">
-            <section class="special box">
-              <h2>Click on route to edit:</h2>
+          <div class="box">
+              <h2>Click on route to view:</h2>
               {this.personalizeRoutes().map(route => {
               return <p key={route.id} onClick={event => this.props.displayRoute(route)} class="box-a"><h3>{route.name}</h3></p>})}
               <button class="button small alt" onClick={this.addRoute}>Add Route?</button>
-            </section>
           </div>
         </div>
       </div> : null

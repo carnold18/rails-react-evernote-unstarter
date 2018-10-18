@@ -27,7 +27,7 @@ class RouteDetails extends Component {
     render() {
         return (
             this.props.selectedRoute ? 
-            <div>
+            <div class="box">
                 <p>{this.props.selectedRoute.name}</p>
                 <p>{this.props.selectedRoute.transportation}</p>
                 <p>{this.props.selectedRoute.distance}</p>

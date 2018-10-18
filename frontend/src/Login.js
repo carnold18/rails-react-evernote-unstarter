@@ -22,12 +22,8 @@ class Login extends Component {
                             placeholder="password"
                             name="password"
                         />
-                        <input type="submit" class="align-center"/>
+                        <input type="submit" class="button small special align-center"/>
                     </form>
-                    {this.props.currentUser.id ? (
-                    <h1>Welcome, {this.props.currentUser.username}!</h1>
-                    ) : null}
-                    {this.props.currentUser.id ? (<button class="button small alt hover" onClick={this.props.logOut}>Log Out</button>) : null}
                 </div>
             </div>
         )

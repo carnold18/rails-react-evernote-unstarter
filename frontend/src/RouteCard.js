@@ -9,26 +9,16 @@ class RouteCard extends Component {
     return route;
   }
 
-  addRoute = () => {
-    // render a form for detailed input
-    // send post request to backend with information
-    // fetch('http://localhost:3000/routes', {
-    //   method: "POST",
-
-    // })
-    console.log("hello")
-  }
-
   render() {
     return (
       this.props.currentUser ?
-      <div class="container">
-        <div class="row">
-          <div class="box">
+      <div className="container">
+        <div className="row">
+          <div className="box">
               <h2>Click on route to view:</h2>
               {this.personalizeRoutes().map(route => {
-              return <p key={route.id} onClick={event => this.props.displayRoute(route)} class="box-a"><h3>{route.name}</h3></p>})}
-              <button class="button small special align-center" onClick={this.addRoute}>Add Route?</button>
+              return <p key={route.id} onClick={event => this.props.displayRoute(route)} className="box-a">{route.name}</p>})}
+              <button className="button small special align-center" onClick={this.props.addRoute}>Add Route</button>
           </div>
         </div>
       </div> : null

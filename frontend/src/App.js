@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import RouteCard from './RouteCard';
-import RouteDetails from './RouteDetails';
 import Header from './Header';
+import RouteViews from './RouteViews';
+import Footer from './Footer';
+import Search from './Search';
 
 class App extends Component {
 
@@ -114,12 +115,10 @@ class App extends Component {
     return (
       <div className="App">
           <Header isLoggedIn={this.state.isLoggedIn} logIn={this.logIn} logOut={this.logOut} handleChange={this.handleChange} currentUser={this.state.currentUser} isMember={this.state.isMember} handleMemberChange={this.handleMemberChange}/>
-          <div class="route-container-left">
-            <RouteCard currentUser={this.state.currentUser} routes={this.state.routes} displayRoute={this.displayRoute} />
-          </div>
-          <div class="route-container-right">
-            <RouteDetails selectedRoute={this.state.selectedRoute} />
-          </div>
+          <br />
+          <Search />
+          <RouteViews selectedRoute={this.state.selectedRoute} currentUser={this.state.currentUser} routes={this.state.routes} displayRoute={this.displayRoute}/>
+          <Footer />
       </div>
     );
   }

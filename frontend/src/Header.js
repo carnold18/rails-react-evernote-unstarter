@@ -21,9 +21,13 @@ class Header extends Component {
                     ) : null}
                 </div>
                 <div class="welcome-right">
-                    {this.props.currentUser.id ? (<button class="button small alt hover" onClick={this.props.logOut}>Log Out</button>) : null}
+                    {this.props.currentUser.id ? (<button class="button small special align-center" onClick={this.props.logOut}>Log Out</button>) : null}
                 </div>
+                <div>
+                { localStorage.token.length >= 5 !== true ?
                 <IsMember isMember={this.props.isMember} handleMemberChange={this.props.handleMemberChange}/>
+                : null}
+                </div>
                 { this.props.isMember ? 
                 <SignUp handleChange={this.props.handleChange}/> : null
                 }

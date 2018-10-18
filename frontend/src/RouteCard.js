@@ -28,7 +28,7 @@ class RouteCard extends Component {
               <h2>Click on route to view:</h2>
               {this.personalizeRoutes().map(route => {
               return <p key={route.id} onClick={event => this.props.displayRoute(route)} class="box-a"><h3>{route.name}</h3></p>})}
-              <button class="button small alt" onClick={this.addRoute}>Add Route?</button>
+              <button class="button small special align-center" onClick={this.addRoute}>Add Route?</button>
           </div>
         </div>
       </div> : null

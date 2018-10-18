@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 
 class SignUp extends Component {
 
@@ -81,7 +82,7 @@ class SignUp extends Component {
                     placeholder="password"
                     name="password"
                 />
-                <input type="submit" />
+                <input type="submit" class="button small special align-center" />
             </form>
         </div>
         )

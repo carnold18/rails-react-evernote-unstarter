@@ -48,6 +48,20 @@ class RouteDetails extends Component {
         // .then(console.log)
     }
 
+    destroyRoute = (event) => {
+        event.preventDefault();
+        const url = 'http://localhost:3000/routes/'+this.props.selectedRoute.id
+        // console.log(url)
+        fetch(url, {
+            method: "DELETE",
+            headers: {
+                'Content-Type':'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${localStorage.token}`
+            }
+        })
+    }
+
     changeEditState = () => {
         this.setState({
             edit: !this.state.edit
@@ -65,8 +79,11 @@ class RouteDetails extends Component {
                     <p className="align-center"><h4>Travel Distance (km):</h4> {this.props.selectedRoute.distance}</p>
                 </div> : null
                 }
-                { this.props.selectedRoute.name ?
-                <button className="button small special align-center" onClick={this.changeEditState}>Edit Details</button>
+                { this.props.selectedRoute.name ? 
+                    <div>
+                        <button className="button small special align-center" onClick={this.changeEditState}>Edit Details</button>
+                        <button className="button small special align-center" onClick={event => this.destroyRoute(event)}>Delete Route</button>
+                    </div>
                 : null }
                 { this.state.edit ? (
                 <form onSubmit={this.editRoute}>

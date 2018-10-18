@@ -36,6 +36,7 @@ class RoutesController < ApplicationController
     end
   
     def destroy
+      route = Route.find(params[:id])
       route.destroy
     end
   

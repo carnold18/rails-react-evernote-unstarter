@@ -29,7 +29,7 @@ class RouteViews extends Component {
             </div>
             : null }
             <div className="route-container-right">
-              <RouteDetails currentUser={this.props.currentUser} selectedRoute={this.props.selectedRoute} aRoute={this.state.aRoute} eRoute={this.state.eRoute}/>
+              <RouteDetails routeIsClicked={this.props.routeIsClicked} currentUser={this.props.currentUser} selectedRoute={this.props.selectedRoute} aRoute={this.state.aRoute} eRoute={this.state.eRoute}/>
             </div>
           </span>
         )

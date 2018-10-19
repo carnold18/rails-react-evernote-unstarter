@@ -17,7 +17,7 @@ class Header extends Component {
                 : null }
                 <div className="welcome-left">
                     {this.props.currentUser.id ? (
-                    <h1>Welcome, {this.props.currentUser.username}!</h1>
+                    <h1 className="welcome-name">Welcome, {this.props.currentUser.username}!</h1>
                     ) : null}
                 </div>
                 <br />

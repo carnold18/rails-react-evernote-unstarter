@@ -15,7 +15,8 @@ class App extends Component {
     selectedRoute: {},
     isMember: false,
     isLoggedIn: false, 
-    input: ""
+    input: "",
+    routeIsClicked: false
   }
 
   componentDidMount() {
@@ -103,7 +104,8 @@ class App extends Component {
   displayRoute = (route) => {
     // console.log(route)
     return this.setState({
-      selectedRoute: route
+      selectedRoute: route,
+      routeIsClicked: !this.state.routeIsClicked
     })
   }
 
@@ -129,7 +131,7 @@ class App extends Component {
           <Header isLoggedIn={this.state.isLoggedIn} logIn={this.logIn} logOut={this.logOut} handleChange={this.handleChange} currentUser={this.state.currentUser} isMember={this.state.isMember} handleMemberChange={this.handleMemberChange} />
           <br />
           <Search searchRoutes={this.searchRoutes} />
-          <RouteViews selectedRoute={this.state.selectedRoute} currentUser={this.state.currentUser} routes={this.searchedRouteList()} displayRoute={this.displayRoute} />
+          <RouteViews routeIsClicked={this.state.routeIsClicked} selectedRoute={this.state.selectedRoute} currentUser={this.state.currentUser} routes={this.searchedRouteList()} displayRoute={this.displayRoute} />
           <Footer />
       </div>
     );

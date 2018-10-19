@@ -11,7 +11,7 @@ class RouteCard extends Component {
 
   render() {
     return (
-      this.props.currentUser ?
+      localStorage.token.length > 4 ?
       <div className="container">
         <div className="row">
           <div className="box">

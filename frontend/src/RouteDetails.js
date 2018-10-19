@@ -70,16 +70,16 @@ class RouteDetails extends Component {
     
     render() {
         return (
-            this.props.selectedRoute.id > 0 || this.props.aRoute ? 
+             (this.props.selectedRoute.id > 0 || this.props.aRoute) ? 
             <div className="box">
-                { this.props.selectedRoute.name ?
+                { this.props.selectedRoute.id > 0 ?
                 <div className="box-a">
                     <p className="align-center"><h4>Route Name / Details:</h4> {this.props.selectedRoute.name}</p>
                     <p className="align-center"><h4>Transportation Type:</h4> {this.props.selectedRoute.transportation}</p>
                     <p className="align-center"><h4>Travel Distance (km):</h4> {this.props.selectedRoute.distance}</p>
                 </div> : null
                 }
-                { this.props.selectedRoute.name ? 
+                { this.props.selectedRoute.id > 0 ? 
                     <div>
                         <button className="button small special align-center" onClick={this.changeEditState}>Edit Details</button>
                         <button className="button small special align-center" onClick={event => this.destroyRoute(event)}>Delete Route</button>

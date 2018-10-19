@@ -6,7 +6,9 @@ class Search extends Component {
   render() {
     return (
       <div className="filter">
-        <input id="title-filter" type="text" placeholder="Search Routes" onChange={event => this.props.searchRoutes(event.target.value)}/>
+         { localStorage.token.length > 4 ? 
+          <input id="title-filter" type="text" placeholder="Search Routes" onChange={event => this.props.searchRoutes(event.target.value)}/>
+         : null }
       </div>
     )}
 }

@@ -102,7 +102,9 @@ class App extends Component {
 
   displayRoute = (route) => {
     // console.log(route)
-    return this.setState({selectedRoute: route})
+    return this.setState({
+      selectedRoute: route
+    })
   }
 
   handleMemberChange = (event) => {
@@ -113,7 +115,7 @@ class App extends Component {
 
   searchRoutes = (input) => {
     this.setState({input: input})
-    console.log(input)
+    // console.log(input)
   }
 
   searchedRouteList = () => {

@@ -25,11 +25,20 @@ class RouteViews extends Component {
             <br />
             { this.props.routes.length > 0 ?
             <div className="route-container-left">
-              <RouteCard addRoute={this.addRoute} currentUser={this.props.currentUser} routes={this.props.routes} displayRoute={this.props.displayRoute} />
+              <RouteCard addRoute={this.addRoute} 
+              currentUser={this.props.currentUser} 
+              routes={this.props.routes} 
+              displayRoute={this.props.displayRoute} />
             </div>
             : null }
             <div className="route-container-right">
-              <RouteDetails routeIsClicked={this.props.routeIsClicked} currentUser={this.props.currentUser} selectedRoute={this.props.selectedRoute} aRoute={this.state.aRoute} eRoute={this.state.eRoute}/>
+              <RouteDetails routeIsClicked={this.props.routeIsClicked} 
+              currentUser={this.props.currentUser} 
+              selectedRoute={this.props.selectedRoute} 
+              aRoute={this.state.aRoute} 
+              eRoute={this.state.eRoute} 
+              getRidOfEdit={this.getRidOfEdit}
+              />
             </div>
           </span>
         )

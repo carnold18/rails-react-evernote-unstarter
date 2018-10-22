@@ -26,6 +26,7 @@ class RouteDetails extends Component {
               }
         })
         // .then(console.log)
+        // this.form.reset();
     }
 
     persistRoute = (event) => {
@@ -69,6 +70,7 @@ class RouteDetails extends Component {
     }
     
     render() {
+        debugger
         return (
              (this.props.selectedRoute.id > 0 || this.props.aRoute) ? 
             <div className="box">
@@ -92,18 +94,21 @@ class RouteDetails extends Component {
                     onChange={this.props.handleChange}
                     placeholder={this.props.selectedRoute.name}
                     name="route name"
+                    // value={this.props.selectedRoute.name}
                 />
                 Transportation Type: <textarea
                     // type="text"
                     onChange={this.props.handleChange}
                     placeholder={this.props.selectedRoute.transportation}
                     name="transportation"
+                    // value={this.props.selectedRoute.transportation}
                 />
                 Travel Distance: <textarea
                     // type="text"
                     onChange={this.props.handleChange}
                     placeholder={this.props.selectedRoute.distance}
                     name="distance"
+                    // value={this.props.selectedRoute.distance}
                 />
                 <input type="submit" className="button small special align-center"/>
             </form> ) : null }
@@ -129,7 +134,9 @@ class RouteDetails extends Component {
                 />
                 <input type="submit" className="button small special align-center"/>
             </form> ) : null }
-
+            {/* { this.props.aRoute ? (
+                this.props.getRidOfEdit
+            ) : null } */}
             </div> 
             : null
         )

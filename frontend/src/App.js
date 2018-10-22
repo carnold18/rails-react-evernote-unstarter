@@ -26,28 +26,29 @@ class App extends Component {
         Authorization: `Bearer ${localStorage.token}`
       }
     })
-      .then(resp => resp.json())
+      .then(response => response.json())
       .then(data => {
         if (!data.error) {
           this.setState({
             currentUser: data
-          });
+          })
         }
-      });
+    })
       // console.log(localStorage.token)
-    const url = 'http://localhost:3000/routes'
-    fetch(url
-    //   , {
-    //   method: "GET",
-    //   headers: {
-    //     Authorization: `Bearer ${localStorage.token}`
-    //   }
-    // }
-      )
-      .then(response => response.json())
-      // .then(data => {console.log(data); return data})
-      .then(data => this.setState({routes: data}))
   }
+
+  getRoutes = () => {
+    fetch('http://localhost:3000/routes')
+      //   , {
+      //   method: "GET",
+      //   headers: {
+      //     Authorization: `Bearer ${localStorage.token}`
+      //   }
+      // }
+        .then(response => response.json())
+        // .then(data => {console.log(data); return data})
+        .then(data => this.setState({routes: data}))
+    }
 
   handleChange = event => {
     this.setState({
@@ -109,6 +110,12 @@ class App extends Component {
     })
   }
 
+  getRidOfEdit = () => {
+      return this.setState({
+        routeIsClicked: !this.state.routeIsClicked
+      })
+  }
+
   handleMemberChange = (event) => {
     this.setState({
       isMember: !this.state.isMember
@@ -128,10 +135,22 @@ class App extends Component {
     // console.log(this.state.currentUser);
     return (
       <div className="App">
-          <Header isLoggedIn={this.state.isLoggedIn} logIn={this.logIn} logOut={this.logOut} handleChange={this.handleChange} currentUser={this.state.currentUser} isMember={this.state.isMember} handleMemberChange={this.handleMemberChange} />
+          <Header isLoggedIn={this.state.isLoggedIn} 
+          logIn={this.logIn} 
+          logOut={this.logOut} 
+          handleChange={this.handleChange} 
+          currentUser={this.state.currentUser} 
+          isMember={this.state.isMember} 
+          handleMemberChange={this.handleMemberChange} />
           <br />
           <Search searchRoutes={this.searchRoutes} />
-          <RouteViews routeIsClicked={this.state.routeIsClicked} selectedRoute={this.state.selectedRoute} currentUser={this.state.currentUser} routes={this.searchedRouteList()} displayRoute={this.displayRoute} />
+          <RouteViews getRoutes={this.getRoutes()} 
+          routeIsClicked={this.state.routeIsClicked} 
+          selectedRoute={this.state.selectedRoute} 
+          currentUser={this.state.currentUser} 
+          routes={this.searchedRouteList()} 
+          displayRoute={this.displayRoute} 
+          getRidOfEdit={this.props.getRidOfEdit} />
           <Footer />
       </div>
     );
